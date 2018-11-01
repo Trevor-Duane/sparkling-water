@@ -501,7 +501,8 @@ def publishNightly() {
                         sh  """
 
 
-                            if [ ${config.buildAgainstH2OBranch} = true ]; then
+                            if [ ${config.buildAgainstH2OBranch} = false ]; then
+                                # Regular nightly build
                                 BUILD_VERSION=\$(wget https://h2o-release.s3.amazonaws.com/sparkling-water/${BRANCH_NAME}/nightly/latest -q -O -)
                                 NEW_BUILD_VERSION=\$((\${BUILD_VERSION} + 1))
                             else
